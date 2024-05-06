@@ -1,0 +1,20 @@
+{
+  "name": "dapr-spike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:server": "node src/server.js",
+    "start:client": "node src/client.js",
+    "dapr:server": "dapr run --app-id hello-world-server --app-port 3001 --dapr-http-port 3500 npm run start:server",
+    "dapr:client": "dapr run --app-id hello-world-client --app-port 3002 --dapr-http-port 3501 npm run start:client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dapr-client": "^3.3.1",
+    "express": "^4.19.2"
+  }
+}
