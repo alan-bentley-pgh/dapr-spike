@@ -6,20 +6,6 @@ const port = 3002;
 const daprHost = '127.0.0.1';
 const daprPort = 3500;
 
-// app.get('/fetch-message', async (req, res) => {
-//     try {
-//       // Call Dapr service invocation API to invoke your service
-//       const result = await fetch(`http://localhost:3500/v1.0/invoke/hello-world-server/method/message`);
-  
-//       const payload = await result.json();
-//       console.log(`result: ${JSON.stringify(payload)}`);
-  
-//       res.send(payload);
-//     } catch (error) {
-//       res.status(500).send(error.message);
-//     }
-// });
-
 app.get('/fetch-message', async (req, res) => {
     const serverAppId = 'hello-world-server';
     try {
