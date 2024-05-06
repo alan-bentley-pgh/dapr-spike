@@ -29,6 +29,8 @@ bin  components  config.yaml # expected output
 #### run dapr sidecar on server
 ```bash
 dapr run --app-id hello-world-server --app-port 3001 --dapr-http-port 3500 npm run start:server
+or
+npm run dapr:server
 ```
 
 #### invoke server endpoint via dapr sidecar
@@ -41,6 +43,8 @@ curl http://localhost:3500/v1.0/invoke/hello-world-server/method/api/v1/message
 #### run dapr sidecar on client
 ```bash
 dapr run --app-id hello-world-client --app-port 3002 --dapr-http-port 3501 npm run start:client
+or
+npm run dapr:client
 ```
 
 #### invoke client endpoint via dapr sidecar
@@ -50,7 +54,24 @@ curl http://localhost:3501/v1.0/invoke/hello-world-client/method/fetch-message
 ```
 
 ## state management
-TODO
+Create a new user:
+```bash
+curl --location 'localhost:3500/v1.0/invoke/hello-world-server/method/api/v1/user' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Alan"
+} '
+9cdc5d54-5d74-4037-887c-2ea4e31b2271
+```
+
+Query for user: 
+```bash
+curl --location 'http://localhost:3500/v1.0/invoke/hello-world-server/method/api/v1/user/9cdc5d54-5d74-4037-887c-2ea4e31b2271' 
+{
+    "id": "9cdc5d54-5d74-4037-887c-2ea4e31b2271",
+    "name": "Alan"
+}
+```
 
 ## pub/sub
 TODO
